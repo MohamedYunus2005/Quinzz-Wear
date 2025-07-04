@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html</ul> lang="en">
+<html lang="en">
 
 <head>
-    <!--
-        Quinzz Wear - Premium Boutique Collection
-        Styles for layout, backgrounds, animations, and responsiveness
-    -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quinzz Wear - Premium Boutique Collection</title>
     <style>
-        /* === GLOBAL STYLES === */
         * {
             margin: 0;
             padding: 0;
@@ -26,13 +21,12 @@
             overflow-x: hidden;
         }
 
-        /* === FLOATING PARTICLES BACKGROUND === */
         .particles {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             pointer-events: none;
             z-index: -1;
         }
@@ -61,14 +55,12 @@
             }
         }
 
-        /* === LAYOUT CONTAINER === */
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* === HEADER SECTION === */
         header {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
@@ -82,8 +74,14 @@
             transition: all 0.3s ease;
         }
 
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .logo {
-            font-size: 2.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f093fb);
             -webkit-background-clip: text;
@@ -107,6 +105,12 @@
             100% {
                 filter: drop-shadow(0 0 5px rgba(69, 183, 209, 0.3));
             }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.2rem;
         }
 
         .nav-links a {
@@ -144,60 +148,38 @@
             width: 100%;
         }
 
-        .header-content {
-            display: flex;
-            justify-content: space-between;
+        /* Hamburger menu styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            width: 32px;
+            height: 32px;
+            justify-content: center;
             align-items: center;
+            z-index: 1100;
         }
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2.2rem;
+        .hamburger span {
+            height: 4px;
+            width: 28px;
+            background: #fff;
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.4s;
         }
 
-        /* === HERO SECTION === */
+        /* HERO SECTION */
         .hero {
-            padding: 170px 0 90px;
+            padding: 140px 0 60px;
             text-align: center;
             color: white;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a"><stop offset="0" stop-color="rgba(255,255,255,0.13)"/><stop offset="1" stop-color="rgba(255,255,255,0)"/></radialGradient></defs><circle cx="200" cy="200" r="120" fill="url(%23a)"/><circle cx="800" cy="300" r="100" fill="url(%23a)"/><circle cx="400" cy="700" r="140" fill="url(%23a)"/></svg>');
-            animation: moveBackground 20s ease-in-out infinite;
-        }
-
-        @keyframes moveBackground {
-
-            0%,
-            100% {
-                transform: translateX(0) translateY(0) rotate(0deg);
-            }
-
-            25% {
-                transform: translateX(20px) translateY(-15px) rotate(1deg);
-            }
-
-            50% {
-                transform: translateX(-15px) translateY(10px) rotate(-1deg);
-            }
-
-            75% {
-                transform: translateX(10px) translateY(-20px) rotate(0.5deg);
-            }
-        }
-
         .hero h1 {
-            font-size: 4.2rem;
+            font-size: 3rem;
             margin-bottom: 1.2rem;
             text-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25), 0 0 32px #fff2;
             animation: fadeInUp 1s ease-out, textGlow 4s ease-in-out infinite;
@@ -207,7 +189,6 @@
         }
 
         @keyframes textGlow {
-
             0%,
             100% {
                 text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.1);
@@ -219,7 +200,7 @@
         }
 
         .hero p {
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             margin-bottom: 2.2rem;
             animation: fadeInUp 1s ease-out 0.3s both;
             position: relative;
@@ -232,11 +213,11 @@
             background: linear-gradient(90deg, #ff6b6b, #f093fb, #4ecdc4, #45b7d1, #ff6b6b);
             background-size: 400% 400%;
             color: white;
-            padding: 20px 48px;
+            padding: 16px 36px;
             text-decoration: none;
             border-radius: 60px;
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             letter-spacing: 1.5px;
             transition: all 0.4s cubic-bezier(.4, 2, .6, 1);
             animation: fadeInUp 1s ease-out 0.6s both, gradientShift 3s ease-in-out infinite;
@@ -266,79 +247,29 @@
             filter: brightness(1.08);
         }
 
-        /* === COLLECTIONS SECTION === */
+        /* COLLECTIONS SECTION */
         .collections {
-            padding: 90px 0;
+            padding: 60px 0;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(255, 255, 255, 0.97) 100%);
             backdrop-filter: blur(22px);
             position: relative;
         }
 
-        .collections::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(118,75,162,0.03)"/><circle cx="75" cy="75" r="1" fill="rgba(102,126,234,0.03)"/><circle cx="50" cy="10" r="1" fill="rgba(240,147,251,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            pointer-events: none;
-        }
-
         .section-title {
             text-align: center;
-            font-size: 3.2rem;
-            margin-bottom: 3.5rem;
+            font-size: 2.2rem;
+            margin-bottom: 2.2rem;
             color: #333;
             position: relative;
             z-index: 1;
             letter-spacing: 2px;
         }
 
-        .section-title::before {
-            content: '';
-            position: absolute;
-            top: -24px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            border-radius: 50%;
-            opacity: 0.13;
-            z-index: -1;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 140px;
-            height: 5px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
-            border-radius: 2.5px;
-            animation: titleUnderline 2s ease-in-out infinite;
-        }
-
-        @keyframes titleUnderline {
-
-            0%,
-            100% {
-                transform: translateX(-50%) scaleX(1);
-            }
-
-            50% {
-                transform: translateX(-50%) scaleX(1.2);
-            }
-        }
-
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.7rem;
-            margin-top: 4.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2.2rem;
             position: relative;
             z-index: 1;
         }
@@ -346,39 +277,22 @@
         .product-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.8) 100%);
             backdrop-filter: blur(18px);
-            border-radius: 28px;
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.13), 0 2px 8px #764ba222;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13), 0 2px 8px #764ba222;
             transition: all 0.4s cubic-bezier(.4, 2, .6, 1);
             position: relative;
             border: 1.5px solid rgba(255, 255, 255, 0.33);
         }
 
-        .product-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 107, 107, 0.13), rgba(78, 205, 196, 0.13));
-            opacity: 0;
-            transition: opacity 0.3s cubic-bezier(.4, 2, .6, 1);
-            z-index: 1;
-        }
-
-        .product-card:hover::before {
-            opacity: 1;
-        }
-
         .product-card:hover {
-            transform: translateY(-18px) scale(1.04) rotateX(4deg) rotateZ(-1deg);
-            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.22), 0 2px 16px #764ba244;
+            transform: translateY(-10px) scale(1.03) rotateX(3deg) rotateZ(-1deg);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.22), 0 2px 16px #764ba244;
         }
 
         .product-image {
             width: 100%;
-            height: 320px;
+            height: 220px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             background-size: 400% 400%;
             display: flex;
@@ -400,7 +314,6 @@
             border-radius: 0;
         }
 
-        /* If you want to use actual images, replace the .product-image div content with <img src="..." alt="..."> */
         @keyframes gradientMove {
             0% {
                 background-position: 0% 50%;
@@ -415,66 +328,44 @@
             }
         }
 
-        .product-image::before {
-            /* Shimmer effect overlay on product image */
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            animation: shimmer 4s infinite;
-        }
-
-        @keyframes shimmer {
-            0% {
-                transform: translateX(-100%) translateY(-100%) rotate(45deg);
-            }
-
-            100% {
-                transform: translateX(100%) translateY(100%) rotate(45deg);
-            }
-        }
-
         .product-info {
-            padding: 2rem;
+            padding: 1.2rem;
             position: relative;
             z-index: 2;
         }
 
         .product-name {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: bold;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
             color: #333;
             position: relative;
         }
 
         .product-price {
-            font-size: 1.8rem;
+            font-size: 1.3rem;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             font-weight: bold;
-            margin-bottom: 1rem;
+            margin-bottom: 0.7rem;
         }
 
         .product-description {
             color: #666;
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.97rem;
         }
 
         .order-button {
-            /* Order on Instagram button */
             width: 100%;
             background: linear-gradient(45deg, #667eea, #764ba2, #f093fb);
             background-size: 200% 200%;
             color: white;
             border: none;
-            padding: 15px;
+            padding: 12px;
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
@@ -485,6 +376,7 @@
             position: relative;
             overflow: hidden;
             animation: buttonGradient 3s ease-in-out infinite;
+            font-size: 1rem;
         }
 
         @keyframes buttonGradient {
@@ -501,33 +393,16 @@
             }
         }
 
-        .order-button::before {
-            /* Shine effect on hover */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .order-button:hover::before {
-            left: 100%;
-        }
-
         .order-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
         }
 
-        /* === INSTAGRAM SECTION === */
+        /* INSTAGRAM SECTION */
         .instagram-section {
-            /* Section for Instagram promotion */
             background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
             background-size: 400% 400%;
-            padding: 100px 0;
+            padding: 60px 0;
             text-align: center;
             color: white;
             position: relative;
@@ -549,57 +424,36 @@
             }
         }
 
-        .instagram-section::before {
-            /* Decorative SVG pattern as background image */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="instagram-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23instagram-pattern)"/></svg>');
-            animation: patternMove 15s linear infinite;
-        }
-
-        @keyframes patternMove {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-
-            100% {
-                transform: translateX(-20px) translateY(-20px);
-            }
-        }
-
         .instagram-section h2 {
             position: relative;
             z-index: 1;
-            margin-bottom: 2rem;
+            margin-bottom: 1.2rem;
+            font-size: 2rem;
         }
 
         .instagram-section p {
             position: relative;
             z-index: 1;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            margin-bottom: 0.7rem;
         }
 
         .instagram-link {
-            /* Instagram profile link button */
             display: inline-block;
             background: linear-gradient(45deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
             backdrop-filter: blur(10px);
             color: #833ab4;
-            padding: 20px 40px;
+            padding: 14px 28px;
             text-decoration: none;
             border-radius: 50px;
             font-weight: bold;
-            margin-top: 2rem;
+            margin-top: 1.2rem;
             transition: all 0.4s ease;
             position: relative;
             z-index: 1;
             border: 2px solid rgba(255, 255, 255, 0.3);
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
         }
 
         .instagram-link:hover {
@@ -608,37 +462,14 @@
             background: rgba(255, 255, 255, 1);
         }
 
-        /* === FOOTER SECTION === */
+        /* FOOTER */
         footer {
             background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: 2rem 0;
             position: relative;
             overflow: hidden;
-        }
-
-        footer::before {
-            /* Animated gradient pattern overlay */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.02) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.02) 75%, transparent 75%, transparent);
-            background-size: 40px 40px;
-            animation: footerPattern 20s linear infinite;
-        }
-
-        @keyframes footerPattern {
-            0% {
-                transform: translateX(0) translateY(0);
-            }
-
-            100% {
-                transform: translateX(40px) translateY(40px);
-            }
         }
 
         footer p {
@@ -647,19 +478,19 @@
             margin-bottom: 1rem;
         }
 
-        /* === SCROLL TO TOP BUTTON === */
+        /* SCROLL TO TOP BUTTON */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
             background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
             color: white;
             border: none;
             border-radius: 50%;
             cursor: pointer;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             opacity: 0;
             transform: translateY(100px);
             transition: all 0.3s ease;
@@ -677,7 +508,7 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
 
-        /* === ANIMATIONS === */
+        /* ANIMATIONS */
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -708,39 +539,129 @@
             }
         }
 
-        /* === RESPONSIVE DESIGN === */
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 1024px) {
+            .container {
+                max-width: 98vw;
+                padding: 0 10px;
+            }
+            .products-grid {
+                gap: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .logo {
-                font-size: 2rem;
+                font-size: 1.5rem;
+            }
+
+            .header-content {
+                flex-direction: row;
             }
 
             .nav-links {
+                position: fixed;
+                top: 64px;
+                right: 0;
+                background: rgba(40, 40, 60, 0.98);
+                flex-direction: column;
+                width: 200px;
+                height: calc(100vh - 64px);
+                align-items: flex-start;
+                padding: 32px 0 0 0;
+                gap: 0;
                 display: none;
+                z-index: 1200;
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 18px 32px;
+                font-size: 1.1rem;
+                color: #fff;
+                border-radius: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                padding: 100px 0 40px;
             }
 
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
 
             .hero p {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
 
             .products-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 180px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .instagram-section h2 {
+                font-size: 1.3rem;
+            }
+
+            .instagram-link {
+                font-size: 1rem;
+                padding: 10px 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 4px;
+            }
+
+            .hero {
+                padding: 80px 0 30px;
+            }
+
+            .product-image {
+                height: 120px;
+            }
+
+            .product-info {
+                padding: 0.7rem;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- === HEADER (Navigation) === -->
+    <!-- HEADER -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">Quinzz Wear</div>
                 <nav>
-                    <ul class="nav-links">
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <ul class="nav-links" id="navLinks">
                         <li><a href="#home">Home</a></li>
                         <li><a href="#collections">Collections</a></li>
                         <li><a href="#about">About</a></li>
@@ -750,7 +671,7 @@
         </div>
     </header>
 
-    <!-- === HERO SECTION === -->
+    <!-- HERO SECTION -->
     <section class="hero" id="home">
         <div class="container">
             <h1>Quinzz Wear</h1>
@@ -759,123 +680,123 @@
         </div>
     </section>
 
-    <!-- === COLLECTIONS SECTION (PRODUCTS) === -->
+    <!-- COLLECTIONS SECTION -->
     <section class="collections" id="collections">
         <h2 class="section-title">Our Collections</h2>
-        <div class="products-grid" style="grid-template-columns: repeat(3, 1fr);">
-            <!-- === PRODUCT CARD 1 === -->
+        <div class="products-grid">
+            <!-- PRODUCT CARD 1 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250703-WA0004.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250703-WA0004.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹850</div>
-                    <p class="product-description">Sophisticated evening dress perfect for special occasions. Features
-                        premium fabric and elegant design.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Sophisticated evening dress perfect for special occasions. Features premium fabric and elegant design.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
-            <!-- === PRODUCT CARD 2 === -->
+            <!-- PRODUCT CARD 2 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250703-WA0007.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250703-WA0007.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹850</div>
-                    <p class="product-description">Lightweight and comfortable summer top. Perfect for casual outings and
-                        daily wear.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Lightweight and comfortable summer top. Perfect for casual outings and daily wear.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
-            <!-- === PRODUCT CARD 3 === -->
+            <!-- PRODUCT CARD 3 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250704-WA0002.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250704-WA0002.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹700</div>
-                    <p class="product-description">Beautifully crafted kurta set with intricate embroidery. Ideal for
-                        festivals and celebrations.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Beautifully crafted kurta set with intricate embroidery. Ideal for festivals and celebrations.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
-            <!-- === PRODUCT CARD 4 === -->
+            <!-- PRODUCT CARD 4 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250703-WA0005.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250703-WA0005.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹700</div>
-                    <p class="product-description">Contemporary jumpsuit with modern styling. Perfect for both office and
-                        casual settings.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Contemporary jumpsuit with modern styling. Perfect for both office and casual settings.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
-            <!-- === PRODUCT CARD 5 === -->
+            <!-- PRODUCT CARD 5 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250703-WA0003.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250703-WA0003.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹850</div>
-                    <p class="product-description">Flowing maxi dress with beautiful floral prints. Comfortable and stylish
-                        for any occasion.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Flowing maxi dress with beautiful floral prints. Comfortable and stylish for any occasion.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
-            <!-- === PRODUCT CARD 6 === -->
+            <!-- PRODUCT CARD 6 -->
             <div class="product-card">
-                <div class="product-image" style="padding:0; width:100%; height:320px; display:flex; align-items:center; justify-content:center;">
-                    <img src="Images/IMG-20250703-WA0002.jpg" alt="Pure Cotton Cloth" class="product-img"
-                        style="width:100%; height:100%; object-fit:cover; display:block;">
+                <div class="product-image">
+                    <img src="Images/IMG-20250703-WA0002.jpg" alt="Pure Cotton Cloth" class="product-img">
                 </div>
                 <div class="product-info">
                     <h3 class="product-name">Pure Cotton Cloth</h3>
                     <div class="product-price">₹800</div>
-                    <p class="product-description">Sharp and professional blazer for the modern woman. Tailored fit with
-                        premium quality fabric.</p>
-                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button"
-                        target="_blank">Order on Instagram</a>
+                    <p class="product-description">Sharp and professional blazer for the modern woman. Tailored fit with premium quality fabric.</p>
+                    <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="order-button" target="_blank">Order on Instagram</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- === INSTAGRAM PROMOTION SECTION === -->
+    <!-- INSTAGRAM PROMOTION SECTION -->
     <section class="instagram-section" id="about">
         <div class="container">
             <h2 class="section-title" style="color: white;">Follow Us on Instagram</h2>
-            <p style="font-size: 1.2rem; margin-bottom: 1rem;">Stay updated with our latest collections and exclusive
-                offers!</p>
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">Stay updated with our latest collections and exclusive offers!</p>
             <p>DM us on Instagram to place your order or for any inquiries.</p>
-            <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="instagram-link"
-                target="_blank">@quinzzwear</a>
+            <a href="https://www.instagram.com/quinzz_wear?igsh=eGIwbGFiaWNubHBk" class="instagram-link" target="_blank">@quinzzwear</a>
         </div>
     </section>
 
-    <!-- === JAVASCRIPT FOR INTERACTIVITY AND ANIMATIONS === -->
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2024 Quinzz Wear. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
     <script>
+        // Hamburger menu for mobile
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+            hamburger.classList.toggle('open');
+        });
+        // Close nav on link click (mobile)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                hamburger.classList.remove('open');
+            });
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    e.preventDefault();
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -920,19 +841,15 @@
             particles.className = 'particles';
             document.body.appendChild(particles);
 
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                // Random size between 2-8px
                 const size = Math.random() * 6 + 2;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
-                // Random horizontal position
                 particle.style.left = Math.random() * 100 + '%';
-                // Random animation duration between 15-25 seconds
                 const duration = Math.random() * 10 + 15;
                 particle.style.animationDuration = duration + 's';
-                // Random delay to stagger animations
                 const delay = Math.random() * 20;
                 particle.style.animationDelay = delay + 's';
                 particles.appendChild(particle);
@@ -952,7 +869,6 @@
                 });
             });
             document.body.appendChild(scrollButton);
-            // Show/hide button based on scroll position
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 500) {
                     scrollButton.classList.add('visible');
@@ -975,24 +891,10 @@
             }
         }
 
-        // Initialize all animations and effects on DOM ready
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             createScrollToTop();
             addPulseAnimation();
-        });
-
-        // Add hover effect to product cards (3D tilt)
-        document.addEventListener('DOMContentLoaded', () => {
-            const productCards = document.querySelectorAll('.product-card');
-            productCards.forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-15px) scale(1.02) rotateX(5deg)';
-                });
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1) rotateX(0deg)';
-                });
-            });
         });
     </script>
 </body>
